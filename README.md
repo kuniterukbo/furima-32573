@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :purchase_histories
-- has_many :items, through: purchase_histories
+- has_many :items
 - has_many :comments
 
 ## items テーブル
@@ -36,7 +36,7 @@
 ### Association
 
 - has_many :purchase_histories
-- has_many :users, through: purchase_histories
+- belongs_to :user
 - has_many :comments
 
 ## purchase_histories テーブル
@@ -58,7 +58,7 @@
 | Column            | Type       | Options                        |
 | ----------------- | ---------- | ------------------------------ |
 | postal_code       | string     | null: false                    |
-| prefectures       | string     | null: false                    |
+| prefecture_id     | integer    | null: false                    |
 | municipality      | string     | null: false                    |
 | address           | string     | null: false                    |
 | building_name     | string     |                                |
