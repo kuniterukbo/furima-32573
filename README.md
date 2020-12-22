@@ -35,7 +35,7 @@
 
 ### Association
 
-- has_many :purchase_histories
+- has_one :purchase_history
 - belongs_to :user
 - has_many :comments
 
@@ -50,7 +50,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_addresses
+- has_one :shipping_address
 
 
 ## shipping_addresses テーブル
@@ -67,7 +67,7 @@
 
 ### Association
 
-- belongs_to :purchase_histories
+- belongs_to :purchase_history
 
 ## comments テーブル
 
