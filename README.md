@@ -15,31 +15,31 @@
 
 ### Association
 
-- has_many :items
-- has_one :purchase_history
+- has_many :purchase_histories
+- has_many :items, through: purchase_histories
 - has_many :comments
 
 ## items テーブル
 
-| Column              | Type    | Options     |
-| ------------------- | ------- | ----------- |
-| product_name        | string  | null: false |
-| product_explanation | text    | null: false |
-| category_id         | integer | null: false |
-| product_state_id    | integer | null: false |
-| shipping_charge_id  | integer | null: false |
-| delivery_source_id  | integer | null: false |
-| delivery_date_id    | integer | null: false |
-| selling_price       | integer | null: false |
-| user                | integer | null: false |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| product_name        | string     | null: false                    |
+| product_explanation | text       | null: false                    |
+| category_id         | integer    | null: false                    |
+| product_state_id    | integer    | null: false                    |
+| shipping_charge_id  | integer    | null: false                    |
+| delivery_source_id  | integer    | null: false                    |
+| delivery_date_id    | integer    | null: false                    |
+| selling_price       | integer    | null: false                    |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- has_one :purchase_history
+- has_many :purchase_histories
+- has_many :users, through: purchase_histories
 - has_many :comments
 
-## purchase_history テーブル
+## purchase_histories テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
@@ -50,23 +50,24 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
+- has_one :shipping_addresses
 
 
-## shipping_address テーブル
+## shipping_addresses テーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| postal_code   | string  | null: false |
-| prefectures   | string  | null: false |
-| municipality  | string  | null: false |
-| address       | string  | null: false |
-| building_name | string  |             |
-| phone_number  | string  | null: false |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| postal_code       | string     | null: false                    |
+| prefectures       | string     | null: false                    |
+| municipality      | string     | null: false                    |
+| address           | string     | null: false                    |
+| building_name     | string     |                                |
+| phone_number      | string     | null: false                    |
+| purchase_history  | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :credit_card
+- belongs_to :purchase_histories
 
 ## comments テーブル
 
