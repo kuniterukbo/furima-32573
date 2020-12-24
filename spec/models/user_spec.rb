@@ -25,6 +25,11 @@ describe User, type: :model do
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
+      it "emailは@を含まないと登録できない" do
+        @user.email = "aaabbb"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
       it "passwordが空では登録できない" do
         @user.password = ''
         @user.valid?
@@ -48,6 +53,11 @@ describe User, type: :model do
       end
       it "パスワードは、英字のみでは登録できない" do
         @user.password = 'aaaaaa'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
+      end
+      it "パスワードは、全角では登録できない" do
+        @user.password = 'あああ１１１'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
