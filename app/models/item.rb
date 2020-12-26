@@ -8,8 +8,6 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :product_name
-    validates :product_explanation
-
     validates :user
   end
 
