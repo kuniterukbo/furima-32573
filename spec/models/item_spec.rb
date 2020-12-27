@@ -101,6 +101,11 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Selling price is out of setting range")
         end
+        it "価格が英数混合では出品できない" do
+          @item.selling_price = "a10000"
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Selling price is out of setting range")
+        end
       end
       
 end  
