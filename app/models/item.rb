@@ -7,7 +7,9 @@ class Item < ApplicationRecord
   belongs_to :delivery_date
 
   with_options presence: true do
+    validates :image
     validates :product_name
+    validates :product_explanation
     validates :user
   end
 
