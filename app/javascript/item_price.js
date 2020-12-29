@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
 
   item_price.addEventListener("input", () =>{
     const inputValue = item_price.value;
-    add_tax_price.innerHTML = inputValue * 0.1
-    profit.innerHTML = inputValue - (inputValue * 0.1)
+    add_tax_price.innerHTML = Math.floor(inputValue * 0.1)
+    profit.innerHTML = inputValue - Math.floor((inputValue * 0.1))
   })
 });
