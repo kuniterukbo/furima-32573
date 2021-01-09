@@ -8,6 +8,10 @@ RSpec.describe PurchaseShipping, type: :model do
     it "必要な情報を適切に入力すると、商品の購入ができる" do
       @purchase_shipping.valid?
     end
+    it "建物名が抜けていても購入ができる" do
+      @purchase_shipping.building_name = ""
+      @purchase_shipping.valid?
+    end
   end
 
   context '商品の購入ができない時' do
