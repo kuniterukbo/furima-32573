@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe PurchaseShipping, type: :model do
   before do
     @purchase_shipping = FactoryBot.build(:purchase_shipping)
+    seller = FactoryBot.create(:user)
+    buyer = FactoryBot.create(:user)
+    item = FactoryBot.build(:item, user_id: seller.id)
+
   end
   context '商品の購入が出来る' do
     it "必要な情報を適切に入力すると、商品の購入ができる" do
